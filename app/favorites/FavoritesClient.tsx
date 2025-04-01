@@ -3,9 +3,10 @@ import React from "react";
 import Container from "../components/Container";
 import Heading from "../components/Heading";
 import ListingCard from "../components/listings/ListingCard";
+import { SafeListing } from "../types";
 
 interface FavoritesClientProps {
-  listings: Listing[];
+  listings: SafeListing[];
   currentUser?: User | null;
 }
 

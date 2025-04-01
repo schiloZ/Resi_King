@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import React from "react";
 import EmptyState from "../components/EmptyState";
 import getCurrentUser from "../actions/getCurrentUser";
@@ -18,7 +19,17 @@ const TripsPage = async () => {
       />
     );
   }
-  return <TripsClient reservations={reservations} currentUser={currentUser} />;
+  const formattedReservations = reservations.map((reservation) => ({
+    ...reservation,
+    createdAt: reservation.createdAt.toString(),
+    startDate: reservation.startDate.toString(),
+    endDate: reservation.endDate.toString(),
+  }));
+  return (
+    <TripsClient
+      reservations={formattedReservations}
+      currentUser={currentUser}
+    />
+  );
 };
-
 export default TripsPage;

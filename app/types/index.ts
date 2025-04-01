@@ -10,7 +10,7 @@ export type SafeUser = Omit<
 > & {
   createdAt: string;
   updatedAt: string;
-  emailVerified: string | null;
+  emailVerified: Date | null; // Change to match Prisma's User type
 };
 
 export type SafeReservation = Omit<

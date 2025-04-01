@@ -17,6 +17,7 @@ interface CountrySelectProps {
 
 const CountrySelect: React.FC<CountrySelectProps> = ({ value, onChange }) => {
   const { getAll } = useCountries();
+
   return (
     <div>
       <Select
@@ -34,7 +35,7 @@ const CountrySelect: React.FC<CountrySelectProps> = ({ value, onChange }) => {
             </div>
           </div>
         )}
-        className={{
+        classNames={{
           control: () => "p-3 border-2",
           input: () => "text-lg",
           option: () => "text-lg",

@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import React from "react";
 import EmptyState from "../components/EmptyState";
 import getCurrentUser from "../actions/getCurrentUser";

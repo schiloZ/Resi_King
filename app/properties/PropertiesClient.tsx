@@ -9,18 +9,17 @@ import toast from "react-hot-toast";
 import ListingCard from "../components/listings/ListingCard";
 import { SafeListing, SafeUser } from "../types";
 
-interface TripsClientProps {
+interface PropertiesClientProps {
   listings: SafeListing[];
   currentUser?: SafeUser | null;
 }
 
-const PropertiesClient = ({ listings, currentUser }: TripsClientProps) => {
+const PropertiesClient = ({ listings, currentUser }: PropertiesClientProps) => {
   const router = useRouter();
   const [deletingId, setDeletingId] = useState("");
   const onCancel = useCallback(
     (id: string) => {
       setDeletingId(id);
-      // TODO: Add API call
       axios
         .delete(`/api/listings/${id}`)
         .then(() => {
@@ -33,7 +32,6 @@ const PropertiesClient = ({ listings, currentUser }: TripsClientProps) => {
         .finally(() => {
           setDeletingId("");
         });
-      setDeletingId("");
     },
     [router]
   );
@@ -49,7 +47,7 @@ const PropertiesClient = ({ listings, currentUser }: TripsClientProps) => {
             onAction={onCancel}
             disabled={deletingId === listing.id}
             actionLabel="Supprimer propriétés"
-            currentUser={currentUser}
+            currentUser={currentUser as User | null}
           />
         ))}
       </div>

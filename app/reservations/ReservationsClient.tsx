@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Toast } from "react-hot-toast";
+import toast, { Toast } from "react-hot-toast";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
@@ -9,9 +9,10 @@ import Heading from "../components/Heading";
 import Container from "../components/Container";
 import ListingCard from "../components/listings/ListingCard";
 import { Reservation, User } from "@prisma/client";
+import { SafeReservation } from "../types";
 
 interface ReservationsClientProps {
-  reservations: Reservation[];
+  reservations: SafeReservation[];
   currentUser?: User | null;
 }
 

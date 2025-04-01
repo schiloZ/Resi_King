@@ -5,6 +5,7 @@ import React from "react";
 import Avatar from "../navbar/Avatar";
 import ListingCategory from "./ListingCategory";
 import dynamic from "next/dynamic";
+import { IconType } from "react-icons";
 
 const Map = dynamic(() => import("../Map"), {
   ssr: false,

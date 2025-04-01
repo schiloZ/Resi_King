@@ -7,9 +7,10 @@ import { useRouter } from "next/navigation";
 import axios from "axios";
 import toast from "react-hot-toast";
 import ListingCard from "../components/listings/ListingCard";
+import { SafeReservation } from "../types";
 
 interface TripsClientProps {
-  reservations: Reservation[];
+  reservations: SafeReservation[];
   currentUser?: User | null;
 }
 

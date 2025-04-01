@@ -11,12 +11,12 @@ import { SafeListing, SafeReservation, SafeUser } from "@/app/types";
 
 interface ListingCardProps {
   data: SafeListing;
-  reservation?: SafeReservation[];
+  reservation?: SafeReservation;
   onAction?: (id: string) => void;
   disabled?: boolean;
   actionLabel?: string;
   actionId?: string;
-  currentUser?: SafeUser | null;
+  currentUser?: User | null;
 }
 
 const ListingCard: React.FC<ListingCardProps> = ({
@@ -68,7 +68,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
         <div className="aspect-square w-full relative overflow-hidden rounded-xl">
           <Image
             fill
-            src={data.image}
+            src={data.image ?? ""}
             alt={data.title}
             className="object-cover h-full w-full group-hover:scale-110 transition"
           />

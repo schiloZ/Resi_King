@@ -25,11 +25,11 @@ const initialDate = {
 };
 
 interface ListingClientProps {
-  reservations?: SafeReservation[];
-  listing: SafeListing & {
-    user: SafeUser;
+  reservations?: Reservation[];
+  listing: Listing & {
+    user: User;
   };
-  currentUser?: SafeUser | null;
+  currentUser?: User | null;
 }
 
 const ListingClient: React.FC<ListingClientProps> = ({
@@ -100,7 +100,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
         <div className="flex flex-col gap-6">
           <ListingHead
             title={listing.title}
-            imageSrc={listing.image}
+            imageSrc={listing.image ?? ""}
             locationValue={listing.locationValue}
             id={listing.id}
             currentUser={currentUser}
@@ -109,7 +109,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
             <ListingInfo
               user={listing.user}
               category={category}
-              description={listing.description}
+              description={listing.description ?? ""}
               roomCount={listing.roomCount}
               guestCount={listing.guestCount}
               bathroomCount={listing.bathroomCount}

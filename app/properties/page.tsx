@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic"; // Forces dynamic rendering for 404
 import React from "react";
 import EmptyState from "../components/EmptyState";
 import getCurrentUser from "../actions/getCurrentUser";
@@ -20,7 +21,16 @@ const PropertiesPage = async () => {
       />
     );
   }
-  return <PropertiesClient listings={listings} currentUser={currentUser} />;
+  return (
+    <PropertiesClient
+      listings={listings}
+      currentUser={{
+        ...currentUser,
+        createdAt: currentUser.createdAt.toISOString(),
+        updatedAt: currentUser.updatedAt.toISOString(),
+      }}
+    />
+  );
 };
 
 export default PropertiesPage;

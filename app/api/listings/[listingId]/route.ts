@@ -8,21 +8,25 @@ interface IParams {
 
 export async function DELETE(
   request: Request,
-  { params }: { params: IParams }
+  { params }: { params: Promise<IParams> } // Fix: params is a Promise
 ) {
   const currentUser = await getCurrentUser();
   if (!currentUser) {
-    return NextResponse.error();
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
-  const { listingId } = await params;
+
+  const { listingId } = await params; // Already correct: awaiting params
+
   if (!listingId || typeof listingId !== "string") {
-    throw new Error("Invalid ID");
+    return NextResponse.json({ error: "Invalid ID" }, { status: 400 });
   }
+
   const listing = await prisma.listing.deleteMany({
     where: {
       id: listingId,
       userId: currentUser.id,
     },
   });
+
   return NextResponse.json(listing);
 }
